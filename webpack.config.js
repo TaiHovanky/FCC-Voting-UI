@@ -32,17 +32,19 @@ module.exports = {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
+                    use: [
+                        'css-loader',
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ]
                 })
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
             }
         ]
     },
     plugins: [
         cleanWebpackPlugin,
-        htmlWebpackPlugin
+        htmlWebpackPlugin,
+        new ExtractTextPlugin('main.[hash].css')
     ]
 }
