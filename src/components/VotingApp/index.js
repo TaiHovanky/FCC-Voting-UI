@@ -3,20 +3,20 @@ import React from 'react';
 import { Card, CardTitle, CardText } from 'react-md';
 
 // @components
-import PollList from '../PollList';
+import PollList from '../../containers/PollListContainer';
 
 import './style.scss';
 
-const Home = (props) => (
+const VotingApp = (props) => (
     <Card className="md-block-centered">
         <CardTitle title="Voting App" subtitle="because democracy rules" />
         <CardText>
-            <p>
-                See all your polls with React and Redux
-            </p>
+            <strong>
+                See all of your polls:
+            </strong>
         </CardText>
         <PollList />
     </Card>
 );
 
-export default Home;
+export default VotingApp;

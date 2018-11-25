@@ -11,9 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-boost": "^0.1.22",
     "axios": "^0.18.0",
     "babel-preset-env": "^1.7.0",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "react": "^16.4.1",
+    "react-apollo": "^2.3.1",
     "react-dom": "^16.4.1",
     "react-md": "^1.9.0"
   },
