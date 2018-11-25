@@ -2,25 +2,30 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+    template: path.join(__dirname, "./index.html"),
+    filename: "./index.html"
+});
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const cleanWebpackPlugin = new CleanWebpackPlugin(
+    path.resolve(__dirname, 'public/bundle.js')
+);
 
 module.exports = {
-    entry: [ path.resolve(__dirname, './src/index.js') ],
+    entry: [
+        '@babel/polyfill', // emulates an ES2015 environment
+        path.resolve(__dirname, './src/index.js')
+    ],
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: 'bundle.[hash].js'
-    },
-    resolve: {
-        extensions: [ '.js', '.jsx', '.css', '.scss' ]
+        filename: 'bundle.js'
     },
     mode: "development",
     module: {
         rules: [
             {
-                loader: 'babel-loader',
-                // query: {
-                //     presets: ['react', 'es2015', 'stage-0']
-                // },
                 test: /\.js?$/,
+                loader: 'babel-loader',
                 exclude: /node_modules/
             },
             {
@@ -36,10 +41,8 @@ module.exports = {
             }
         ]
     },
-    // plugins: [
-    //     new HtmlWebpackPlugin({
-    //         template: 'client/index.html'
-    //     }),
-    //     new ExtractTextPlugin('main.css')
-    // ]
+    plugins: [
+        cleanWebpackPlugin,
+        htmlWebpackPlugin
+    ]
 }

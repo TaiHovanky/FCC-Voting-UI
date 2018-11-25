@@ -6,7 +6,7 @@ const Home = (props) => (
         <CardTitle title="Voting App" subtitle="because democracy rules" />
         <CardText>
             <p>
-                See all your polls
+                See all your polls with React and Redux
             </p>
         </CardText>
     </Card>
